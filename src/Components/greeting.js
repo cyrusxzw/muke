@@ -6,7 +6,6 @@ const Greeting = () => {
     return (
         <h1 className='abc'>
             Hello Hi
-            {test}
         </h1>
     )
 }
