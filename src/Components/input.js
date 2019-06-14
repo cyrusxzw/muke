@@ -26,6 +26,7 @@ export default class Input extends React.Component {
                <button onClick={
                    (event)=>{
                         addList(value);
+                        this.setValue("");
                    }
                }>Add</button>
            </div>    
