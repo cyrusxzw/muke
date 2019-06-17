@@ -54,12 +54,31 @@ class PCHeader extends React.Component{
     }
 
     handleSubmit(e){
-
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                const myFetch = {
+                    method: 'GET',
+                };
+                const formData = this.props.form.getFieldsValue();
+                fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&password=password&r_userName="+ formData.r_userName +"&r_password=" + formData.r_password +"&r_confirmPassword=" + formData.r_confirmPassword, myFetch).
+                then(response=>response.json()).then(json=>{
+                    this.setState({
+                        userName:json.NickUserName,
+                        userid:json.UserId,
+                    });
+                });
+                message.success("Request Success!");
+                this.setModalVisible(false);
+                this.props.form.resetFields();
+                console.log('Received values of form: ', values);
+            }
+          });
     }
 
     render(){
         const { TabPane } = Tabs;
-        let {getFieldProps} = this.props.form;
+        const {getFieldDecorator} = this.props.form;
         const userShow = this.state.hasLogin?<Menu.Item key="logout" className="register">
             <Button type="primary" htmlType="button">{this.state.userName}</Button>
             &nbsp;&nbsp;
@@ -115,15 +134,37 @@ class PCHeader extends React.Component{
                 <Tabs type="card">
                     <TabPane tab="Register" key="2">
                         <Form mode="horizontal" onSubmit={this.handleSubmit.bind(this)}>
-                            <Form.Item>
-                                <Input placeholder="Please input username" {...getFieldProps('r_userName')}/>
+                            <Form.Item label="Username">
+                            {getFieldDecorator('r_userName', {
+                                rules: [{ required: true, message: 'Please input your username!' }],
+                                })(
+                                <Input
+                                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                placeholder="Username"
+                                />,
+                             )}
                             </Form.Item>
                             <Form.Item label="Password">
-                                <Input type="password" placeholder="Please input password" {...getFieldProps('r_password')}/>
+                            {getFieldDecorator('r_password', {
+                                rules: [{ required: true, message: 'Please input your password!' }],
+                                })(
+                                <Input type="password"
+                                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                placeholder="Password"
+                                />,
+                             )}
                             </Form.Item>
                             <Form.Item label="Confirm Password">
-                                <Input type="password" placeholder="Please confirm password" {...getFieldProps('r_confirmPassword')}/>
+                            {getFieldDecorator('r_confirmPassword', {
+                                rules: [{ required: true, message: 'Please input passsword again!' }],
+                                })(
+                                <Input type="password"
+                                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                placeholder="Confirm Password"
+                                />,
+                             )}
                             </Form.Item>
+                            
                             <Button type="primary" htmlType="submit">Register</Button>
                         </Form>
                     </TabPane>
