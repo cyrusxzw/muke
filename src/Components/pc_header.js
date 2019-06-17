@@ -32,7 +32,7 @@ export default class PCHeader extends React.Component{
         <Row>
           <Col span={2}></Col>
           <Col span={4}>
-              <NavLink exact to='/' className='logo'>
+              <NavLink exact='true' to='/' className='logo'>
                   <Img src="../src/img/chrome.png" alt="logo"/>
                   <Title>ReactNews</Title>
               </NavLink>

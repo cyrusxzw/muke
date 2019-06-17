@@ -1,12 +1,8 @@
 import React from 'react';
 import { Link, Route, Switch, BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import Header from './Components/header';
-import Footer from './Components/footer';
-import Greeting from './Components/greeting';
-import Input from './Components/input';
-import styled from 'styled-components';
 import PCHeader from './Components/pc_header';
+import PCFooter from './Components/pc_footer';
 import 'antd/dist/antd.css'; 
 import './css/index.css';
 
@@ -46,6 +42,7 @@ class Index extends React.Component{
         return (
             <div>
                 <PCHeader/>
+                <PCFooter/>
             </div>
         )
     }
