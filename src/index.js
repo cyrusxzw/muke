@@ -6,7 +6,8 @@ import Footer from './Components/footer';
 import Greeting from './Components/greeting';
 import Input from './Components/input';
 import styled from 'styled-components';
-import PCHeader from './Components/pc_header'
+import PCHeader from './Components/pc_header';
+import 'antd/dist/antd.css'; 
 import './css/index.css';
 
 
