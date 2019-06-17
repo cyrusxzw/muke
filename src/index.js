@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route, Switch, BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import PCHeader from './Components/pc_header';
+import PCHeader from './Components/pc_header/pc_header.js';
 import PCFooter from './Components/pc_footer';
 import 'antd/dist/antd.css'; 
 import './css/index.css';
