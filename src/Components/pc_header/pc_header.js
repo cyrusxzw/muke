@@ -33,6 +33,18 @@ class PCHeader extends React.Component{
         };
     }
 
+    componentWillMount(){
+        if(localStorage.userid){
+            this.setState({
+                hasLogin:true,
+            });
+            this.setState({
+                userid: localStorage.userid,
+                userName: localStorage.userName,
+            });
+        }
+    }
+
     setModalVisible(value){
         this.setState({
             modalVisible:value,
@@ -68,6 +80,8 @@ class PCHeader extends React.Component{
                         userName:json.NickUserName,
                         userid:json.UserId,
                     });
+                    localStorage.userid = json.UserId;
+                    localStorage.userName = json.NickUserName;
                 });
                 if(this.state.action == "login"){
                     this.setState({
@@ -83,6 +97,8 @@ class PCHeader extends React.Component{
     }
 
     logout(){
+        localStorage.userid = '';
+        localStorage.userName = '';
         this.setState({
             hasLogin: false,
         });
