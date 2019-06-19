@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Tabs, Carousel } from 'antd';
+import NewsBlock from './news_block';
 import styled from 'styled-components';
 import './newscontainer.css';
 
@@ -28,6 +29,11 @@ export default class Newscontainer extends React.Component{
                             </Carousel>
                         </div>
                      </LeftContainer>
+                     <Tabs className="tabs_news">
+                         <TabPane tab="News" key="1">
+                                <NewsBlock count="20" type="top" width="100%" bordered="false"/>
+                         </TabPane>
+                     </Tabs>
                  </Col>
                  <Col span={2}></Col>
              </Row>
