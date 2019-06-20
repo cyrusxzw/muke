@@ -1,8 +1,53 @@
 .container {
     padding-top: 20px;
+    display: grid!important;
+    grid-template-columns: auto auto 500px;
+    grid-gap: 10px;
 }
 
 .carousel img {
     height: auto;
     width: 400px;
+}
+
+.custom-image img {
+    height: 90px;
+}
+
+
+.home-three-part .custom-image img {
+    height: 110px;
+}
+.custom-card h3 {
+    font-size: 14px;
+    width:112px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.topNewsList.left {
+    margin-top: 22px;
+}
+
+.topNewsList .ant-card-body {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 5px;
+}
+
+.topNewsList .ant-card-body::before {
+    display: none;
+}
+
+.topNewsList ul {
+    padding-left: 0;
+}
+
+.topNewsList li {
+    list-style-type: none;
+}
+
+.home-three-part .ant-card-body {
+    grid-template-columns: repeat(8, auto);
 }
