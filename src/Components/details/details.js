@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, BackTop } from 'antd';
 import NewsImageBlock from'../newscontainer/news_image_block';
+import Comments from '../comment/comment'
 import styled from 'styled-components';
 
 
@@ -38,6 +39,7 @@ export default class Details extends React.Component{
     }
 
     render(){
+        const usekey = this.props.match.params.uniquekey;
         return(
             <div>
                 <Row>
@@ -45,6 +47,7 @@ export default class Details extends React.Component{
                     <Content span={13} className="detail-container">
                         <div className="article-container" dangerouslySetInnerHTML={this.createMarkup()}>
                         </div>
+                        <Comments uniquekey={this.props.match.params.uniquekey}/>
                     </Content>
                     <Col span={1}></Col>
                     <Col span={6}>
