@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Link, Route, Switch, BrowserRouter, HashRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import PCHeader from './Components/pc_header/pc_header.js';
 import PCFooter from './Components/pc_footer';
@@ -42,17 +42,15 @@ class Index extends React.Component{
         }, 4000);
          
         return (
-            <Switch>
-                <Route exact path="/" render={()=>(
-                    <div>
-                     <PCHeader/>
+            <HashRouter>
+                 <PCHeader/>
+                <Route exact path="/" render={()=>(                  
                      <Newscontainer/> 
-                     <PCFooter/>
-                     </div>
                 )}>
                 </Route>
                 <Route exact path="/details/:uniquekey" component={Details}></Route> 
-            </Switch>
+                <PCFooter/>
+            </HashRouter>
         )
     }
 } 

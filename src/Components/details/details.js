@@ -1,6 +1,12 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, BackTop } from 'antd';
+import NewsImageBlock from'../newscontainer/news_image_block';
+import styled from 'styled-components';
 
+
+const Content = styled(Col)`
+    padding:20px 0;
+`
 
 export default class Details extends React.Component{
     constructor(props){
@@ -36,13 +42,17 @@ export default class Details extends React.Component{
             <div>
                 <Row>
                     <Col span={2}></Col>
-                    <Col span={14} className="detail-container">
+                    <Content span={13} className="detail-container">
                         <div className="article-container" dangerouslySetInnerHTML={this.createMarkup()}>
                         </div>
+                    </Content>
+                    <Col span={1}></Col>
+                    <Col span={6}>
+                        <NewsImageBlock count="39" type="top" width="100%" cardTitle="Related News"></NewsImageBlock>
                     </Col>
-                    <Col span={6}></Col>
                     <Col span={2}></Col>
                 </Row>
+                <BackTop/>
             </div>
         )
     }
